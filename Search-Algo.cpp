@@ -6,6 +6,9 @@ using namespace std;
 
 const char newline = '\n';
 
+/*
+New search class which holds all the search algorithms
+*/
 class Search {
 	vector<int> numbers;
 	int dataSize;
@@ -15,6 +18,9 @@ public:
 	int getSize();
 };
 
+/*
+Set new random numbers in the vector (array)
+*/
 void Search::setRandomNumers(int arrySize) {
 	dataSize = arrySize;
 	numbers.reserve(dataSize);
@@ -24,14 +30,23 @@ void Search::setRandomNumers(int arrySize) {
 	}
 }
 
+/*
+Grab the size of the vector
+*/
 int Search::getSize() {
 	return dataSize;
 }
 
+/*
+Grab the number at the reqested index
+*/
 int Search::getNum(int index) {
 	return numbers.at(index);
 }
 
+/*
+Function to printout each element (mainly for testing)
+*/
 void printOutVector(Search searchType) {
 	for (int i = 0; i < searchType.getSize(); i++) {
 		cout << searchType.getNum(i) << newline;
