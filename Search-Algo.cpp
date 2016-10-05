@@ -21,6 +21,7 @@ public:
 	int getNum(int index);
 	int getSize();
 	void bubbleSort();
+	void selectionSort();
 	int binarySearch(int x);
 };
 
@@ -53,7 +54,9 @@ int Search::getNum(int index) {
 }
 
 /*
-Bubble sort the vector
+Bubble Sort:
+Loops through the array and compares each variable with the on next to it
+Swaps the variables if the first one is bigger than the other
 */
 void Search::bubbleSort() {
 	for (int i = dataSize - 1; i >= 0; i--) {
@@ -62,6 +65,24 @@ void Search::bubbleSort() {
 				swapInfo(j, j - 1);
 			}
 		}
+	}
+}
+
+/*
+Selection sort:
+Finds the smallest element in the array and swaps it with the 1st element.
+Find the second smallest element (from the remaining unsorted array) and swaps it with the 2nd element.
+So on and so forth until whole array is sorted
+*/
+void Search::selectionSort() {
+	for (int i = 0; i < dataSize - 1; i++) {
+		int minNum = i;
+		for (int j = i + 1; j < dataSize; j++) {
+			if (numbers.at(j) < numbers.at(minNum)) {
+				minNum = j;
+			}
+		}
+		swapInfo(i, minNum);
 	}
 }
 
@@ -122,8 +143,8 @@ void printOutVector(Search searchType) {
 int main() {
 	Search binarySearch;
 	int foundAt;
-	binarySearch.setRandomNumers(10, 0, 10);
-	binarySearch.bubbleSort();
+	binarySearch.setRandomNumers(60, 0, 20);
+	binarySearch.selectionSort();
 	printOutVector(binarySearch);
 	foundAt = binarySearch.binarySearch(7);
 	cout << "The item was found at " << foundAt << newline;
